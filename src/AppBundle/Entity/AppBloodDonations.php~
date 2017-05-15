@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AppBloodDonations
+ *
+ * @ORM\Table(name="app_blood_donations")
+ * @ORM\Entity
+ */
+class AppBloodDonations
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     */
+    private $idUser;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_place", type="integer", nullable=false)
+     */
+    private $idPlace;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantity", type="integer", nullable=false)
+     */
+    private $quantity;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_request", type="integer", nullable=false)
+     */
+    private $idRequest;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,89 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AppRequest
+ *
+ * @ORM\Table(name="app_request")
+ * @ORM\Entity
+ */
+class AppRequest
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     */
+    private $idUser;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_time", type="datetime", nullable=false)
+     */
+    private $dateTime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="blood_type", type="string", length=5, nullable=false)
+     */
+    private $bloodType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="target_name", type="string", length=500, nullable=false)
+     */
+    private $targetName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time_active", type="datetime", nullable=false)
+     */
+    private $timeActive;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="changed_status_time", type="datetime", nullable=false)
+     */
+    private $changedStatusTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="changed_by_id", type="integer", nullable=false)
+     */
+    private $changedById;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+
