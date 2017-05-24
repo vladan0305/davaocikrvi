@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Front;
 
-use AppBundle\Form\RequestType;
+use AppBundle\Form\front\RequestType;
 use AppBundle\Entity\AppRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +25,7 @@ class RequestController extends Controller
                 $em->persist($bloodrequest);
                 $em->flush();
             }
-            return $this->redirectToRoute('request');
+            return $this->redirectToRoute('blood_request');
         }
         
         return $this->render('@App/front/request/request.html.twig', array(

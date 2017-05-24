@@ -3,6 +3,6 @@ front_homepage:
     path:     /
     defaults: { _controller: AppBundle:Front/Index:index }
     
-request:
+blood_request:
     path:       /request
     defaults:   { _controller: AppBundle:Front/Request:request } 
