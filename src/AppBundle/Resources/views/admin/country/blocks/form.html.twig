@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+
+    {{ form_widget(form.save) }}
+    <a href="{{ path('admin_countries') }}" class="btn btn-default"> Nazad </a>
+
+{{ form_end(form) }}

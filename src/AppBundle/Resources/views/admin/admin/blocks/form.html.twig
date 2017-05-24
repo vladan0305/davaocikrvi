@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-group">
+        {{ form_label(form.first_name) }}
+        {{ form_errors(form.first_name) }}
+        {{ form_widget(form.first_name) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.last_name) }}
+        {{ form_errors(form.last_name) }}
+        {{ form_widget(form.last_name) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.password) }}
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password) }}
+    </div>
+    
+
+    {{ form_widget(form.save) }}
+    <a href="{{ path('admin_admins') }}" class="btn btn-default"> Nazad </a>
+
+{{ form_end(form) }}

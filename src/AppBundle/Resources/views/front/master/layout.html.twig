@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>
+        {% if page_title is defined %} {{ page_title }} | Davaoci Krvi {% endif %}
+    </title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('skins/front/css/bootstrap.min.css') }}" rel="stylesheet">
+        <style> body {padding-top: 70px;} </style>
+    {% endblock %}
+
+</head>
+
+<body>
+
+    {% include '@App/front/master/navigationbar.html.twig'%}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                {% block body %}{% endblock %}
+
+            </div>
+        </div>
+
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('skins/front/js/jquery.js') }}"></script>
+        <script src="{{ asset('skins/front/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+
+</body>
+</html>

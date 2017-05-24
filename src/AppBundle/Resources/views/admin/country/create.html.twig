@@ -1,0 +1,29 @@
+{% extends '@App/admin/master/layout.html.twig' %}
+{% set page_title = 'Dodavanje Nove Države' %}
+
+{% block body %}
+
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Nova Država
+
+            <a href="{{ path('admin_countries') }}" class="btn btn-success" style="float: right;">
+                Nazad
+            </a>
+        </h1>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Forma za kreiranje Nove Države
+            </div>
+            <div class="panel-body">
+
+                {% include '@App/admin/country/blocks/form.html.twig' %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

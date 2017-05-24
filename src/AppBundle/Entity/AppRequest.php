@@ -7,18 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AppRequest
  *
- * @ORM\Table(name="app_request")
+ * @ORM\Table(name="app_request", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="changed_by_id", columns={"changed_by_id"})})
  * @ORM\Entity
  */
 class AppRequest
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
-     */
-    private $idUser;
-
     /**
      * @var \DateTime
      *
@@ -71,44 +64,33 @@ class AppRequest
     /**
      * @var integer
      *
-     * @ORM\Column(name="changed_by_id", type="integer", nullable=false)
-     */
-    private $changedById;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
-
+    /**
+     * @var \AppBundle\Entity\AppAdmin
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppAdmin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="changed_by_id", referencedColumnName="id")
+     * })
+     */
+    private $changedBy;
 
     /**
-     * Set idUser
+     * @var \AppBundle\Entity\AppUsers
      *
-     * @param integer $idUser
-     *
-     * @return AppRequest
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
+    private $idUser;
 
-        return $this;
-    }
 
-    /**
-     * Get idUser
-     *
-     * @return integer
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 
     /**
      * Set dateTime
@@ -279,30 +261,6 @@ class AppRequest
     }
 
     /**
-     * Set changedById
-     *
-     * @param integer $changedById
-     *
-     * @return AppRequest
-     */
-    public function setChangedById($changedById)
-    {
-        $this->changedById = $changedById;
-
-        return $this;
-    }
-
-    /**
-     * Get changedById
-     *
-     * @return integer
-     */
-    public function getChangedById()
-    {
-        return $this->changedById;
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -310,5 +268,53 @@ class AppRequest
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set changedBy
+     *
+     * @param \AppBundle\Entity\AppAdmin $changedBy
+     *
+     * @return AppRequest
+     */
+    public function setChangedBy(\AppBundle\Entity\AppAdmin $changedBy = null)
+    {
+        $this->changedBy = $changedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get changedBy
+     *
+     * @return \AppBundle\Entity\AppAdmin
+     */
+    public function getChangedBy()
+    {
+        return $this->changedBy;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \AppBundle\Entity\AppUsers $idUser
+     *
+     * @return AppRequest
+     */
+    public function setIdUser(\AppBundle\Entity\AppUsers $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \AppBundle\Entity\AppUsers
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

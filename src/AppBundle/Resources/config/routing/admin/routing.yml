@@ -1,0 +1,65 @@
+# Admin Routes File
+admin_homepage:
+    path:     /admin/dashboard
+    defaults: { _controller: AppBundle:Admin/Index:index }
+
+# Countries | Države
+admin_countries:
+    path:     /admin/countries
+    defaults: { _controller: AppBundle:Admin/Country:index }
+
+admin_countries_create:
+    path:     /admin/countries/create
+    defaults: { _controller: AppBundle:Admin/Country:create }
+
+admin_countries_edit:
+    path:     /admin/countries/edit/{id}/
+    defaults: { _controller: AppBundle:Admin/Country:edit }
+    requirements:
+        id: '\d+'
+
+admin_countries_delete:
+    path:     /admin/countries/delete/{id}/
+    defaults: { _controller: AppBundle:Admin/Country:delete }
+    requirements:
+        id: '\d+'
+# Admins | Administratori
+admin_admins:
+    path:     /admin/admins
+    defaults: { _controller: AppBundle:Admin/Admin:index }
+
+admin_admins_create:
+    path:     /admin/admins/create
+    defaults: { _controller: AppBundle:Admin/Admin:create }
+
+admin_admins_edit:
+    path:     /admin/admins/edit/{id}/
+    defaults: { _controller: AppBundle:Admin/Admin:edit }
+    requirements:
+        id: '\d+'
+
+admin_admins_delete:
+    path:     /admin/admins/delete/{id}/
+    defaults: { _controller: AppBundle:Admin/Admin:delete }
+    requirements:
+        id: '\d+' 
+# Request | Zahtevi
+admin_requests:
+    path:     /admin/requests
+    defaults: { _controller: AppBundle:Admin/Request:index }
+
+admin_requests_create:
+    path:     /admin/requests/create
+    defaults: { _controller: AppBundle:Admin/Request:create }
+
+admin_requests_edit:
+    path:     /admin/requests/edit/{id}/
+    defaults: { _controller: AppBundle:Admin/Request:edit }
+    requirements:
+        id: '\d+'
+
+admin_requests_delete:
+    path:     /admin/requests/delete/{id}/
+    defaults: { _controller: AppBundle:Admin/Request:delete }
+    requirements:
+        id: '\d+'        
