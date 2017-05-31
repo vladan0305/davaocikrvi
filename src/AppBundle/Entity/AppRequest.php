@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AppRequest
@@ -14,14 +15,15 @@ class AppRequest
 {
     /**
      * @var \DateTime
-     *
+     * 
      * @ORM\Column(name="date_time", type="datetime", nullable=false)
      */
     private $dateTime;
 
     /**
      * @var string
-     *
+     * @Assert\Choice({"A", "B", "0"})
+     * @Assert\NotBlank()
      * @ORM\Column(name="blood_type", type="string", length=5, nullable=false)
      */
     private $bloodType;
@@ -73,9 +75,9 @@ class AppRequest
     /**
      * @var \AppBundle\Entity\AppAdmin
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppAdmin")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="changed_by_id", referencedColumnName="id")
+     * ORM\ManyToOne(targetEntity="AppBundle\Entity\AppAdmin")
+     * ORM\JoinColumns({
+     *   ORM\JoinColumn(name="changed_by_id", referencedColumnName="id")
      * })
      */
     private $changedBy;
@@ -83,14 +85,22 @@ class AppRequest
     /**
      * @var \AppBundle\Entity\AppUsers
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
+     * ORM\JoinColumns({
+     *   ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
      */
     private $idUser;
 
-
+    public function __construct() {
+//        $this->dateTime = new \DateTime(null);
+//        $this->timeActive = new \DateTime(null);
+//        $this->changedStatusTime = new \DateTime(null);
+//        $this->idUser = 1;
+//        $this->status = true;
+//        $this->changedBy = 1;
+        
+    }
 
     /**
      * Set dateTime

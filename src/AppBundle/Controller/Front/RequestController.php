@@ -20,12 +20,13 @@ class RequestController extends Controller
         
         if ($request->isMethod(Request::METHOD_POST)) {
             $form->handleRequest($request);
-
+                    
             if ($form->isSubmitted() && $form->isValid()) {
                 $em->persist($bloodrequest);
                 $em->flush();
+                return $this->redirectToRoute('front_homepage');
             }
-            return $this->redirectToRoute('blood_request');
+            
         }
         
         return $this->render('@App/front/request/request.html.twig', array(
