@@ -1,0 +1,74 @@
+{% extends '@App/admin/master/layout.html.twig' %}
+{% set page_title = 'Donacije' %}
+
+{% block body %}
+
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Modul Donacije
+
+            <a href="{{ path('admin_blooddonations_create') }}" class="btn btn-success" style="float: right;">
+                Dodaj Novu Donaciju
+            </a>
+        </h1>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                Naziv Tabele
+            </div>
+
+            <div class="panel-body">
+                <div>
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 4%">#</th>
+                                <th class="text-center">Korisnik</th>
+                                <th class="text-center">Grad</th>
+                                <th class="text-center">Zahtev</th>
+                                <th class="text-center">Kolicina</th>
+                                <th class="text-center">Datum</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center" style="width: 20%">Akcije</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if blooddonations is not empty %}
+
+                            {% for blooddonation in blooddonations %}
+                            <tr>
+
+                                <td class="text-center">{{ loop.index }}</td>
+                                <td class="text-center">{{ blooddonation.idUser.email }}</td>
+                                <td class="text-center">{{ blooddonation.idPlace.name }}</td>
+                                <td class="text-center">{{ blooddonation.idRequest.id }}</td>
+                                <td class="text-center">{{ blooddonation.quantity }}</td>
+                                <td class="text-center">{{ blooddonation.date|date('Y-m-d') }}</td>
+                                <td class="text-center">{{ blooddonation.status }}</td>
+
+                                <td class="text-center">
+                                    <a href="{{ path('admin_blooddonations_edit', {'id': blooddonation.getId()}) }}"
+                                       class="btn btn-primary">
+                                       <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="{{ path('admin_blooddonations_delete', {'id': blooddonation.getId()}) }}" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

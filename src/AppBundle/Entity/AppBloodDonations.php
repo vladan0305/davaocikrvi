@@ -7,25 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AppBloodDonations
  *
- * @ORM\Table(name="app_blood_donations")
+ * @ORM\Table(
+ *     name="app_blood_donations",
+ *     indexes={@ORM\Index(name="id_user", columns={"id_user"}
+ * ),
+ * @ORM\Index(name="id_place", columns={"id_place"}),
+ * @ORM\Index(name="id_request", columns={"id_request"})})
  * @ORM\Entity
  */
 class AppBloodDonations
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
-     */
-    private $idUser;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_place", type="integer", nullable=false)
-     */
-    private $idPlace;
-
     /**
      * @var integer
      *
@@ -39,13 +30,6 @@ class AppBloodDonations
      * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_request", type="integer", nullable=false)
-     */
-    private $idRequest;
 
     /**
      * @var boolean
@@ -63,55 +47,37 @@ class AppBloodDonations
      */
     private $id;
 
-
+    /**
+     * @var \AppBundle\Entity\AppRequest
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppRequest")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_request", referencedColumnName="id")
+     * })
+     */
+    private $idRequest;
 
     /**
-     * Set idUser
+     * @var \AppBundle\Entity\AppCities
      *
-     * @param integer $idUser
-     *
-     * @return AppBloodDonations
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppCities")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_place", referencedColumnName="id")
+     * })
      */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
+    private $idPlace;
 
     /**
-     * Get idUser
+     * @var \AppBundle\Entity\AppUsers
      *
-     * @return integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
+    private $idUser;
 
-    /**
-     * Set idPlace
-     *
-     * @param integer $idPlace
-     *
-     * @return AppBloodDonations
-     */
-    public function setIdPlace($idPlace)
-    {
-        $this->idPlace = $idPlace;
 
-        return $this;
-    }
-
-    /**
-     * Get idPlace
-     *
-     * @return integer
-     */
-    public function getIdPlace()
-    {
-        return $this->idPlace;
-    }
 
     /**
      * Set quantity
@@ -162,30 +128,6 @@ class AppBloodDonations
     }
 
     /**
-     * Set idRequest
-     *
-     * @param integer $idRequest
-     *
-     * @return AppBloodDonations
-     */
-    public function setIdRequest($idRequest)
-    {
-        $this->idRequest = $idRequest;
-
-        return $this;
-    }
-
-    /**
-     * Get idRequest
-     *
-     * @return integer
-     */
-    public function getIdRequest()
-    {
-        return $this->idRequest;
-    }
-
-    /**
      * Set status
      *
      * @param boolean $status
@@ -217,5 +159,77 @@ class AppBloodDonations
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idRequest
+     *
+     * @param \AppBundle\Entity\AppRequest $idRequest
+     *
+     * @return AppBloodDonations
+     */
+    public function setIdRequest(\AppBundle\Entity\AppRequest $idRequest = null)
+    {
+        $this->idRequest = $idRequest;
+
+        return $this;
+    }
+
+    /**
+     * Get idRequest
+     *
+     * @return \AppBundle\Entity\AppRequest
+     */
+    public function getIdRequest()
+    {
+        return $this->idRequest;
+    }
+
+    /**
+     * Set idPlace
+     *
+     * @param \AppBundle\Entity\AppCities $idPlace
+     *
+     * @return AppBloodDonations
+     */
+    public function setIdPlace(\AppBundle\Entity\AppCities $idPlace = null)
+    {
+        $this->idPlace = $idPlace;
+
+        return $this;
+    }
+
+    /**
+     * Get idPlace
+     *
+     * @return \AppBundle\Entity\AppCities
+     */
+    public function getIdPlace()
+    {
+        return $this->idPlace;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \AppBundle\Entity\AppUsers $idUser
+     *
+     * @return AppBloodDonations
+     */
+    public function setIdUser(\AppBundle\Entity\AppUsers $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \AppBundle\Entity\AppUsers
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

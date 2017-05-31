@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+    
+    <div class="form-group">
+        {{ form_label(form.idUser) }}
+        {{ form_errors(form.idUser) }}
+        {{ form_widget(form.idUser) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.changedBy) }}
+        {{ form_errors(form.changedBy) }}
+        {{ form_widget(form.changedBy) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.dateTime) }}
+        {{ form_errors(form.dateTime) }}
+        {{ form_widget(form.dateTime) }}
+    </div>
+    
+     <div class="form-group">
+        {{ form_label(form.bloodType) }}
+        {{ form_errors(form.bloodType) }}
+        {{ form_widget(form.bloodType) }}
+    </div>
+    
+     <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+    
+     <div class="form-group">
+        {{ form_label(form.targetName) }}
+        {{ form_errors(form.targetName) }}
+        {{ form_widget(form.targetName) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.timeActive) }}
+        {{ form_errors(form.timeActive) }}
+        {{ form_widget(form.timeActive) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.status) }}
+        {{ form_errors(form.status) }}
+        {{ form_widget(form.status) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.changedStatusTime) }}
+        {{ form_errors(form.changedStatusTime) }}
+        {{ form_widget(form.changedStatusTime) }}
+    </div>
+
+    {{ form_widget(form.submit) }}
+    <a href="{{ path('admin_requests') }}" class="btn btn-default"> Nazad </a>
+
+{{ form_end(form) }}

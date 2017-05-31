@@ -1,0 +1,14 @@
+{% extends '@App/front/master/layout.html.twig' %}
+{% set page_title = 'Home' %}
+
+{% block body %}
+
+    <h1>Ovo je frontend view skripta</h1>
+    <p class="lead">Idemo dalje</p>
+    <ul class="list-unstyled">
+        <li>Bootstrap v3.3.7</li>
+        <li>jQuery v1.11.1</li>
+    </ul>
+
+    <h2><a href="{{ path('admin_homepage') }}">Udji na ADMIN</a> </h2>
+{% endblock %}

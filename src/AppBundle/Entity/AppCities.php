@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AppCities
  *
- * @ORM\Table(name="app_cities")
+ * @ORM\Table(name="app_cities", indexes={@ORM\Index(name="country_id", columns={"country_id"})})
  * @ORM\Entity
  */
 class AppCities
@@ -29,18 +29,21 @@ class AppCities
     /**
      * @var integer
      *
-     * @ORM\Column(name="country_id", type="integer", nullable=false)
-     */
-    private $countryId;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\AppCountry
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppCountry")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * })
+     */
+    private $country;
 
 
 
@@ -93,30 +96,6 @@ class AppCities
     }
 
     /**
-     * Set countryId
-     *
-     * @param integer $countryId
-     *
-     * @return AppCities
-     */
-    public function setCountryId($countryId)
-    {
-        $this->countryId = $countryId;
-
-        return $this;
-    }
-
-    /**
-     * Get countryId
-     *
-     * @return integer
-     */
-    public function getCountryId()
-    {
-        return $this->countryId;
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -124,5 +103,29 @@ class AppCities
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\AppCountry $country
+     *
+     * @return AppCities
+     */
+    public function setCountry(\AppBundle\Entity\AppCountry $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\AppCountry
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AppUsers
  *
- * @ORM\Table(name="app_users")
+ * @ORM\Table(name="app_users", indexes={@ORM\Index(name="city", columns={"city"})})
  * @ORM\Entity
  */
 class AppUsers
@@ -62,13 +62,6 @@ class AppUsers
     private $address;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="city", type="integer", nullable=false)
-     */
-    private $city;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="is_active", type="boolean", nullable=false)
@@ -97,6 +90,16 @@ class AppUsers
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\AppCities
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppCities")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city", referencedColumnName="id")
+     * })
+     */
+    private $city;
 
 
 
@@ -269,30 +272,6 @@ class AppUsers
     }
 
     /**
-     * Set city
-     *
-     * @param integer $city
-     *
-     * @return AppUsers
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return integer
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
      * Set isActive
      *
      * @param boolean $isActive
@@ -372,5 +351,29 @@ class AppUsers
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \AppBundle\Entity\AppCities $city
+     *
+     * @return AppUsers
+     */
+    public function setCity(\AppBundle\Entity\AppCities $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \AppBundle\Entity\AppCities
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

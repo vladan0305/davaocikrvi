@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AppRequestPlace
  *
- * @ORM\Table(name="app_request_place")
+ * @ORM\Table(name="app_request_place", indexes={@ORM\Index(name="city_id", columns={"city_id"})})
  * @ORM\Entity
  */
 class AppRequestPlace
@@ -18,13 +18,6 @@ class AppRequestPlace
      * @ORM\Column(name="address", type="string", length=255, nullable=false)
      */
     private $address;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="city_id", type="integer", nullable=false)
-     */
-    private $cityId;
 
     /**
      * @var boolean
@@ -41,6 +34,16 @@ class AppRequestPlace
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\AppCities
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AppCities")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * })
+     */
+    private $city;
 
 
 
@@ -66,30 +69,6 @@ class AppRequestPlace
     public function getAddress()
     {
         return $this->address;
-    }
-
-    /**
-     * Set cityId
-     *
-     * @param integer $cityId
-     *
-     * @return AppRequestPlace
-     */
-    public function setCityId($cityId)
-    {
-        $this->cityId = $cityId;
-
-        return $this;
-    }
-
-    /**
-     * Get cityId
-     *
-     * @return integer
-     */
-    public function getCityId()
-    {
-        return $this->cityId;
     }
 
     /**
@@ -124,5 +103,29 @@ class AppRequestPlace
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \AppBundle\Entity\AppCities $city
+     *
+     * @return AppRequestPlace
+     */
+    public function setCity(\AppBundle\Entity\AppCities $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \AppBundle\Entity\AppCities
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

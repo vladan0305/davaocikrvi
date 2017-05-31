@@ -1,0 +1,46 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+    
+    <div class="form-group">
+        {{ form_label(form.idUser) }}
+        {{ form_errors(form.idUser) }}
+        {{ form_widget(form.idUser) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.idPlace) }}
+        {{ form_errors(form.idPlace) }}
+        {{ form_widget(form.idPlace) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.idRequest) }}
+        {{ form_errors(form.idRequest) }}
+        {{ form_widget(form.idRequest) }}
+    </div>
+    
+     <div class="form-group">
+        {{ form_label(form.quantity) }}
+        {{ form_errors(form.quantity) }}
+        {{ form_widget(form.quantity) }}
+    </div>
+    
+     <div class="form-group">
+        {{ form_label(form.date) }}
+        {{ form_errors(form.date) }}
+        {{ form_widget(form.date) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.status) }}
+        {{ form_errors(form.status) }}
+        {{ form_widget(form.status) }}
+    </div>
+    
+
+    {{ form_widget(form.submit) }}
+    <a href="{{ path('admin_requests') }}" class="btn btn-default"> Nazad </a>
+
+{{ form_end(form) }}

@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('admin_homepage') }}">CMS Admin</a>
+    </div>
+
+    <ul class="nav navbar-top-links navbar-right">
+    </ul>
+
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+
+                <!-- OVDE TREBA DA VAM IDU SVI MENIJI KOJI SE VEZUJU PREKO RUTA ZA KONTROLERE I AKCIJE -->
+                <li>
+                    <a href="{{ path('admin_homepage') }}">
+                        <i class="fa fa-home"></i> Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-map-marker"></i> Lokacije
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse" aria-expanded="false">
+                        <li>
+                            <a href="{{ path('admin_countries') }}"> Države </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_cities') }}"> Gradovi </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="{{ path('admin_admins') }}">
+                        <i class="fa fa-users"></i> Administratori
+                    </a>
+                </li>
+                
+               <li>
+                    <a href="{{ path('admin_requests') }}">
+                        <i class="fa fa-medkit"></i> Zahtevi
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ path('admin_blooddonations') }}">
+                        <i class="fa fa-heart"></i> Donacije Krvi
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ path('admin_requestplace') }}">
+                        <i class="fa fa-map-marker"></i> Mesta
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
