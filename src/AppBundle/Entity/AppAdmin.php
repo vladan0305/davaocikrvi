@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * AppAdmin
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="app_admin")
  * @ORM\Entity
  */
-class AppAdmin
+class AppAdmin extends BaseUser
 {
     /**
      * @var string
@@ -31,14 +32,14 @@ class AppAdmin
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $email;
+//    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
-    private $password;
+    //protected $password;
 
     /**
      * @var integer
@@ -47,9 +48,12 @@ class AppAdmin
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Set firstName

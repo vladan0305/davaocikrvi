@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * AppRequest
  *
- * @ORM\Table(name="app_request", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="changed_by_id", columns={"changed_by_id"})})
+ * @ORM\Table(name="app_request", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="changed_by_id", columns={"changed_by_id"})})
  * @ORM\Entity
  */
 class AppRequest
@@ -22,7 +22,7 @@ class AppRequest
 
     /**
      * @var string
-     * @Assert\Choice({"A", "B", "0"})
+     * @Assert\Choice({"A", "B", "0", "AB"})
      * @Assert\NotBlank()
      * @ORM\Column(name="blood_type", type="string", length=5, nullable=false)
      */
@@ -87,16 +87,16 @@ class AppRequest
      *
      * ORM\ManyToOne(targetEntity="AppBundle\Entity\AppUsers")
      * ORM\JoinColumns({
-     *   ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     *   ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
-    private $idUser;
+    private $userId;
 
     public function __construct() {
 //        $this->dateTime = new \DateTime(null);
 //        $this->timeActive = new \DateTime(null);
 //        $this->changedStatusTime = new \DateTime(null);
-//        $this->idUser = 1;
+//        $this->userId = 1;
 //        $this->status = true;
 //        $this->changedBy = 1;
         
@@ -305,26 +305,26 @@ class AppRequest
     }
 
     /**
-     * Set idUser
+     * Set userId
      *
-     * @param \AppBundle\Entity\AppUsers $idUser
+     * @param \AppBundle\Entity\AppUsers $userId
      *
      * @return AppRequest
      */
-    public function setIdUser(\AppBundle\Entity\AppUsers $idUser = null)
+    public function setUserId(\AppBundle\Entity\AppUsers $userId = null)
     {
-        $this->idUser = $idUser;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get idUser
+     * Get userId
      *
      * @return \AppBundle\Entity\AppUsers
      */
-    public function getIdUser()
+    public function getUserId()
     {
-        return $this->idUser;
+        return $this->userId;
     }
 }

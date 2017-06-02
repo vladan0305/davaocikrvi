@@ -62,4 +62,18 @@ admin_requests_delete:
     path:     /admin/requests/delete/{id}/
     defaults: { _controller: AppBundle:Admin/Request:delete }
     requirements:
-        id: '\d+'        
+        id: '\d+'   
+        
+# Login & Authorization | Login i autorizacija korisnika
+login:
+    path:     /admin/login
+    defaults: { _controller: AppBundle:Admin/Security:login }
+
+logout:
+    path:     /admin/logout
+    defaults: { _controller: AppBundle:Admin/Security:logout }
+
+auth:
+    path:     /admin/auth
+    defaults: { _controller: AppBundle:Admin/Security:check }
+        
